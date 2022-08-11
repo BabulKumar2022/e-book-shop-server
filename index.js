@@ -16,14 +16,15 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
-const router =require("./routes/book-routers")
+const router =require("./routes/book-routers");
 
-const app = express();
+const app = express(); 
 
 // //middleware 
 // app.use("/", (req, res, next) =>{ 
 //     res.send("This is our starting app");
 // })
+app.use(express.json());
 app.use("/books", router)//localhost:5000/books
 
   
