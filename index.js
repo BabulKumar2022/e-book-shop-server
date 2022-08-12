@@ -13,31 +13,31 @@
 // console.log(uri);
 ///////////////////////////////////////////////////////////////////////
 
-
 const express = require("express");
 const mongoose = require("mongoose");
-const router =require("./routes/book-routers");
+const router = require("./routes/book-routers");
+const cors = require("cors");
 
-const app = express(); 
+const app = express();
 
-// //middleware 
-// app.use("/", (req, res, next) =>{ 
+// //middleware
+// app.use("/", (req, res, next) =>{
 //     res.send("This is our starting app");
 // })
 app.use(express.json());
-app.use("/books", router)//localhost:5000/books
+app.use(cors());
+app.use("/books", router); //localhost:5000/books
 
-  
- 
-mongoose.connect(
-    "mongodb+srv://admin:sdJrnvaU4f8Pmj0z@cluster0.53gugm2.mongodb.net/e-shopping1?retryWrites=true&w=majority")
-    .then(() => console.log("connected to MongoDB"))
-    .then(() => {
-        app.listen(5000)
-    })
-    .catch((error) => console.log(error)); 
-
- 
+mongoose
+  .connect(
+    "mongodb+srv://admin:sdJrnvaU4f8Pmj0z@cluster0.53gugm2.mongodb.net/e-shopping1?retryWrites=true&w=majority"
+  )
+  .then(() => console.log("connected to MongoDB"))
+  .then(() => {
+    app.listen(5000);
+  })
+  .catch((error) => console.log(error));
+    
 
 //=admin
 //=pass=sdJrnvaU4f8Pmj0z
